@@ -1,0 +1,429 @@
+1)	display a table of a particular number   
+import java.util.*;
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter a Number: ");
+		int n = sc.nextInt();
+		
+		for (int i=1; i<=10; i++) 
+		{
+			System.out.println(n+"*"+i+"="+(n*i));
+		}
+		sc.close();
+	}
+}
+
+2)	declare two numbers and one operator as a character. e.g. '+'
+using switch... case check which operator is declared and accordingly perform the action
+
+import java.util.*;
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter 2 Numbers: ");
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+
+		System.out.println("Enter an Operator: ");
+		int ch = sc.next().charAt(0);
+		
+		switch(ch) 
+		{
+		case '+' : System.out.println(a+b); 
+				break;
+		case '-' : System.out.println(a-b); 
+				break;
+		case '*' : System.out.println(a*b); 
+				break;
+		case '/' : System.out.println(a/b); 
+				break;
+		case '%' : System.out.println(a%b);
+				 break;
+		default : System.out.println("invalid choice");
+		}
+		
+		sc.close();
+	}
+
+}
+
+3)	Display numbers  1 to 10 using loop
+
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+`	{
+		for(int i=1; i<=10; i++) 
+		{
+			System.out.println(i);
+		}
+	}
+}
+
+4)	Display numbers from 3 to 30 except number 24  using loop.
+public class MyClass 
+{
+	public static void main(String[] args) 
+	{
+		for(int i=3; i<=30; i++)
+		{
+			if(i==24)
+				continue;
+			System.out.println(i);
+		}
+	}
+}
+
+5)	Using if…….else if….  Else,  display whether result is  fail, pass, second class , first class, Distinction etc.
+import java.util.*;
+public class MyClass 
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter percentage: ");
+		Double per = sc.nextDouble();
+		
+		if(marks>=85)
+			System.out.println("distinction");
+		else if(per>=70)
+			System.out.println("first class");
+		else if(per>=60)
+			System.out.println("second class");
+		else if(per>=35)
+			System.out.println("pass");
+		else 
+			System.out.println("fail");
+		
+		sc.close();
+	}
+}
+
+6) display all prime numbers between 3 to 30
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		for (int i = 3; i <= 30; i = i + 2) 
+		{
+			int flag = 0;
+			for (int j = 2; j <= i / 2; j++) 
+				{
+				if (i % j == 0) {
+					flag++;
+					break;
+				}
+			}
+			if (flag==0)
+				System.out.println(i);
+		}
+	}
+}
+
+
+7) using nested for loop display following :
+
+A  a
+A  b
+A  c
+
+B  a
+B  b
+B  c
+
+C  a
+C  b
+C  c
+
+public class MyClass 
+{
+	public static void main(String[] args) 
+	{		
+		for (char c='A'; c<='C'; c++) 
+		{
+			for (char ch='a'; ch<='c'; ch++)
+				System.out.println(c+"\t"+ch);
+			System.out.println();
+		}
+	}
+}
+
+8) solve following patten programs:
+
+
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+
+public class MyClass 
+{
+	public static void main(String[] args) 
+	{		
+		for (int i=1; i<=5; i++) 
+		{
+			for (int s=i; s<5; s++)
+				System.out.print(" ");
+			for (int j=1; j<=i; j++)
+				System.out.print("* ");
+			System.out.println();
+		}
+	}
+}
+
+  2)     * * * * 
+  	  * * * 
+  	   * * 
+            * 
+
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{		
+		for (int i=1; i<=5; i++) 
+		{
+			for (int s=i; s>1; s--)
+				System.out.print(" ");
+			for (int j=i; j<=5; j++)
+				System.out.print("* ");
+			System.out.println();
+		}
+	}
+}
+
+3)
+    * 
+   * * 
+  * * * 
+ * * * * 
+  * * * 
+   * * 
+    * 
+public class MyClass 
+{
+	public static void main(String[] args) 
+	{
+		for (int i = 1; i <= 5; i++) 
+		{
+			for (int s = i; s < 5; s++)
+				System.out.print(" ");
+			for (int j = 1; j <= i; j++)
+				System.out.print("* ");
+			System.out.println();
+		}
+		for (int i = 1; i <= 4; i++) 
+		{
+			for (int s = i; s >= 1; s--)
+				System.out.print(" ");
+			for (int j = i; j <= 4; j++)
+				System.out.print("* ");
+			System.out.println();
+		}
+	}
+}
+
+
+
+
+
+
+
+11) display all prime numbers between 3 to 30
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		for (int i = 3; i <= 30; i = i + 2) 
+		{
+			int flag = 0;
+			for (int j = 2; j <= i / 2; j++) 
+				{
+				if (i % j == 0) {
+					flag++;
+					break;
+				}
+			}
+			if (flag==0)
+				System.out.println(i);
+		}
+	}
+}
+
+
+12) using nested for loop display following :
+
+A  a
+A  b
+A  c
+
+B  a
+B  b
+B  c
+
+C  a
+C  b
+C  c
+
+public class MyClass 
+{
+	public static void main(String[] args) 
+	{		
+		for (char c='A'; c<='C'; c++) 
+		{
+			for (char ch='a'; ch<='c'; ch++)
+				System.out.println(c+"\t"+ch);
+			System.out.println();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+1) accept two numbers and add them.
+import java.util.*;
+
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter no 1: ");
+		int a = sc.nextInt();
+		System.out.println("Enter no 2: ");
+		int b = sc.nextInt();
+
+		System.out.println("Addition: " + (a + b));
+	}
+}
+
+
+2) accept two numbers and subtract them.
+import java.util.*;
+
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter no 1: ");
+		int a = sc.nextInt();
+		System.out.println("Enter no 2: ");
+		int b = sc.nextInt();
+
+		System.out.println("Subtraction: " + (a - b));
+	}
+}
+
+
+3) accept two numbers and multiply them.
+
+import java.util.*;
+
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter no 1: ");
+		int a = sc.nextInt();
+		System.out.println("Enter no 2: ");
+		int b = sc.nextInt();
+
+		System.out.print("Multiplication: " + (a * b));
+	}
+}
+
+
+
+
+4) accept two numbers and devide them.
+import java.util.*;
+
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter no 1: ");
+		int a = sc.nextInt();
+		System.out.println("Enter no 2: ");
+		int b = sc.nextInt();
+
+		System.out.print("Division: " + (a / b));
+	}
+}
+
+5) accept two numbers and check whether first number is greater or second number is greater or they are equal.
+
+import java.util.*r;
+
+public class MyClass 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter No 1: ");
+		int a = sc.nextInt();
+		System.out.println("Enter No 2: ");
+		int b = sc.nextInt();
+
+		if (a == b)
+			System.out.print("equal");
+		else if (a > b)
+			System.out.println("No 1 is greater");
+		else
+			System.out.println("No 2 is greater");
+	}
+}
+
+
+6) accept a number and check whether it is divisible by 3 or not
+
+
+import java.util.*;
+
+public class MyClass 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter a no: ");
+		int num = sc.nextInt();
+		if (num % 3 == 0)
+			System.out.println(num + " is divisible by 3");
+		else
+			System.out.println(num + " is not divisible by 3");
+	}
+}

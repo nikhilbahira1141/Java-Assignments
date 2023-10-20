@@ -1,0 +1,484 @@
+package nnnn;
+
+import java.util.*;
+
+/*
+ * 1) accept 10 numbers from user and add them inside the ArrayList. using
+ * ListIterator display all the numbers bidirectionally.
+ * 
+ */
+
+public class Demo
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("enter 10 Numbers");
+		Scanner sc=new Scanner(System.in);
+		List<Integer> l1=new ArrayList<>();
+		for(int i=0;i<10;i++)
+		{
+			l1.add(sc.nextInt());
+		}
+			Iterator<Integer> i=l1.iterator();
+			while(i.hasNext())
+			{
+				System.out.println(i.next());
+			}
+	}
+}
+
+
+
+
+package nnnn;
+
+/*
+ * 2) on the developer side: create a generic class which can accept any type
+ * with setters , getters and toString methods. create necessary jar files and
+ * documentation.
+ * 
+ * on client side create the object of above generic class and invoke its
+ * setters , getters and display the object.
+ */
+
+
+public class myClass<T>
+{
+	
+	private T Name;
+	
+
+	public T getName() {
+		return Name;
+	}
+
+	public void setName(T name) {
+		Name = name;
+	}
+
+
+	@Override
+	public String toString() {
+		return "myClass [ Name=" + Name + "]";
+	}
+}
+
+//ClientSide
+
+package client;
+
+import nnnn.myClass;
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		myClass<String> m1=new myClass<>();
+		m1.setName("nikhil");
+		System.out.println(m1.getName());
+	}
+}
+
+
+
+
+/*
+ * 3) create LinkedList with the values 10,20,30 and 40. display it. now 
+ * 500 in the beginning. insert 400 at 2nd position. add 1000 at the end.
+ * display the list again.
+ */
+package nnnn;
+
+import java.util.*;
+
+public class Demo
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> l1=new LinkedList<>();
+		l1.add(10);
+		l1.add(20);
+		l1.add(30);
+		l1.add(40);
+		System.out.println("before editing"+l1);
+		((LinkedList<Integer>) l1).addFirst(500);
+		((LinkedList<Integer>) l1).addLast(400);
+		l1.add(1,1000);
+		System.out.println("after editing"+l1);
+		
+		
+	}
+}
+
+
+
+
+package nnnn;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.*;
+
+/*
+ * 4) add 5 numbers inside CopyOnWriteArrayList and show how can you add one
+ * more number at the same time of traversal through its iterator.
+ */
+
+public class Demo
+{
+	public static void main(String[] args) 
+	{
+		List<Integer> l1=new CopyOnWriteArrayList<>();
+		l1.add(1);
+		l1.add(2);
+		l1.add(3);
+		l1.add(4);
+		l1.add(5);
+		
+		Iterator<Integer> i= l1.iterator();
+		
+		while(i.hasNext())
+		{
+			System.out.println(i.next());
+			l1.add(10);
+		}
+		System.out.println(l1);//printing by toString
+	}
+}
+
+
+
+package nikhil;
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * 5) create a class "MyClass". create 5 different objects of it. add them in a
+ * ArrayList. store ArrayList in file. Now open a file, read ArrayList and
+ * display all objects.
+ */
+
+class MyClass implements Serializable
+{
+	private int id;
+	private String name;
+	public MyClass(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public int getId() {
+		return id;
+	}
+	public String getName() {
+		return name;
+	}
+	@Override
+	public String toString() {
+		return "MyClass [id=" + id + ", name=" + name + "]";
+	}
+}
+public class Demo 
+{
+	
+	public static void main(String[] args) 
+	{
+		
+	MyClass M1=new MyClass(1,"Nikhil");
+	MyClass M2=new MyClass(2,"Sarthak");
+	MyClass M3=new MyClass(3,"Abhi");
+	MyClass M4=new MyClass(4,"Akash");
+	MyClass M5=new MyClass(5,"Akshay");
+	
+	List<MyClass> L1=new ArrayList<>();
+	L1.add(M1);
+	L1.add(M2);
+	L1.add(M3);
+	L1.add(M4);
+	L1.add(M5);
+	
+	try 
+	{
+		FileOutputStream fos=new FileOutputStream("D:\\ForClient\\nick.txt");
+		ObjectOutputStream oos=new ObjectOutputStream(fos);
+		
+		oos.writeObject(L1);
+		fos.close();
+		oos.close();
+		FileInputStream fis=new FileInputStream("D:\\ForClient\\nick.txt");
+		try (ObjectInputStream ois = new ObjectInputStream(fis)) 
+		{
+			List<?> l2=(List<?>)ois.readObject();
+		
+			Iterator<?> itr=l2.iterator();
+			while(itr.hasNext())
+			{
+				System.out.println(itr.next());
+			}
+		}
+	} 
+	catch (Exception e) 
+	{
+		
+		e.printStackTrace();
+	}
+	
+	}
+}
+
+
+package nikhil;
+
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+/*
+ * 6) create a HashMap. store prn no. and students name of 10 students inside
+ * the HashMap. display it using iterator.
+ */
+
+class Student
+{
+	
+	private String name;
+	public Student( String name) {
+		super();
+		
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	@Override
+	public String toString() {
+		return "Student [ name=" + name + "]";
+	}
+}
+public class Demo
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+	Student []arr=new Student[10];
+	System.out.println("enter 10 student entry name");
+	for(int i=0;i<10;i++)
+	{
+		arr[i]=new Student(sc.next());
+	}
+	Map<Integer,Student> m1=new HashMap<>();
+	for(int j=0;j<10;j++)
+	{
+		m1.put(j,arr[j]);
+	}
+	Set<?> s1=m1.entrySet();
+	Iterator<?> i=s1.iterator();
+	while(i.hasNext())
+	{
+		Map.Entry<?,?> entry=(Entry<?, ?>) i.next();
+		System.out.println("Prn no:2309445200"+entry.getKey()+"\t"+entry.getValue());
+	}
+	}	
+	
+}
+
+
+package nikhil;
+
+/*
+ * ) create a hierarchy as follows interface Game- play() method Derive at least
+ * 3 classes from it. ( Cricket, Chess and Football ) Now Create generic class
+ * which can take Game type (i.e. any sub type of Game) as parameter. In this
+ * class try to call the play() method of the class which is passed to it.
+ */
+
+interface Game
+{
+	void play();
+}
+class Cricket implements Game
+{	
+	public void play() 
+	{
+		System.out.println("play cricket");
+	}
+}
+class Chess implements Game
+{
+	public void play()
+	{
+		System.out.println("play Chess");
+	}
+}
+class Football implements Game
+{
+	public void play() 
+	{
+	System.out.println("play Football");
+	}
+}
+class genric<g extends Game>
+{
+	public void perform(g ref)
+	{
+		ref.play();
+	}
+
+}
+public class Demo
+{
+	public static void main(String[] args)
+	{
+		genric<Game> g1=new genric<>();
+		g1.perform(new Cricket());
+		g1.perform(new Chess());
+		g1.perform(new Football());
+	}
+}
+
+
+
+
+package nnnn;
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * Q8)class Employee private int empid private String name,desig private double
+ * salary
+ * 
+ * parameterized constructor toString method
+ * 
+ * 
+ * create 4 objects of Employee create an arraylist of Employee and store these
+ * 4 objects. create an iterator and traverse throught the arraylist
+ * 
+ * now store this arraylist inside filesytem and also read.
+ */
+
+class Employee implements Serializable
+{
+	private int empid;
+	private String name;
+	private String desig;
+	private double Salery;
+	public Employee(int empid, String name, String desig, double salery) {
+	
+		this.empid = empid;
+		this.name = name;
+		this.desig = desig;
+		Salery = salery;
+	}
+	public void disp()
+	{
+		System.out.println("display"+getClass().getName());
+	}
+	@Override
+	public String toString() {
+		return "Employee [empid=" + empid + ", name=" + name + ", desig=" + desig + ", Salery=" + Salery + "]";
+	}
+	
+}
+public class Demo
+{
+	public static void main(String[] args) 
+	{
+	
+	List<Employee> l1=new ArrayList<>();
+	l1.add(new Employee(11,"nikhil","pion",1000));
+	l1.add(new Employee(12,"yugant","clerk",10000));
+	l1.add(new Employee(11,"akash","mama",100));
+	l1.add(new Employee(11,"abhi","manager",100000));
+	
+	Iterator<Employee> i1=l1.iterator();
+	while(i1.hasNext())
+	{
+		System.out.println(i1.next());
+	}
+	try 
+	{
+		FileOutputStream fos=new FileOutputStream("D:\\ForClient\\List.text");
+		ObjectOutputStream oos=new ObjectOutputStream(fos);
+		oos.writeObject(l1);
+		fos.close();
+		oos.close();
+		FileInputStream fis=new FileInputStream("D:\\ForClient\\List.text");
+		ObjectInputStream ois=new ObjectInputStream(fis);
+		System.out.println("*************************************************");
+		List<?> l2=(List<?>)ois.readObject();
+		Iterator<?> itr=l2.iterator();
+		while(itr.hasNext())
+		{
+			((Employee) itr.next()).disp();
+		}
+	} 
+	catch (Exception e) 
+	{
+		e.printStackTrace();
+	}
+	
+	}
+}
+
+
+
+
+package nnnn;
+
+import java.util.*;
+
+/*
+ * 9) maintain ICC ranking of at least 5 batsmen in the "HashMap". list should
+ * be maintain as "rank" "name" e.g. "1" "Rohit Sharma". Now ask any rank bet'n
+ * 1 to 5 from user. ( user input). if user asks for a particular rank ,
+ * retrieve batsman name for that rank from the HashMap.
+ * 
+ */
+
+class Batsman
+{
+ private String Name;
+
+public Batsman(String name) 
+{
+	super();
+	Name = name;
+}
+@Override
+public String toString() {
+	return "Batsman [Name=" + Name + "]";
+}
+
+
+public String getName() 
+{
+	return Name;
+}
+}
+
+public class Demo
+{
+	public static void main(String[] args) 
+	{
+		Batsman[] B=new Batsman[5];
+		B[0]=new Batsman("Virat Kohli");
+		B[1]=new Batsman("Steven Smith");
+		B[2]=new Batsman("joe Root");
+		B[3]=new Batsman("Kane Willemson");
+		B[4]=new Batsman("Rohit Sharma");
+		
+		Map<Integer,Batsman> M=new HashMap<>();
+		M.put(1,B[0]);
+		M.put(2,B[1]);
+		M.put(5,B[2]);
+		M.put(3,B[3]);
+		M.put(4,B[4]);
+		
+		System.out.println(M.get(new Scanner(System.in).nextInt()));
+		
+	}
+	
+}
